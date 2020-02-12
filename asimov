@@ -16,7 +16,7 @@
 # @author  Steve Grunwell
 # @license MIT
 
-readonly FILEPATHS=(
+readonly DEFAULT_FILEPATHS=(
     "vendor ../composer.json"
     "node_modules ../package.json"
     ".vagrant ../Vagrantfile"
@@ -27,6 +27,15 @@ readonly FILEPATHS=(
     "Pods ../Podfile"
     ".build ../Package.swift"
 )
+
+CONFIG_FILE=~/.asimov.conf
+
+if [ -f "$CONFIG_FILE" ]; then
+    while read custom_path; do custom_paths+=("$custom_path"); done < "$CONFIG_FILE"
+    readonly FILEPATHS=("${custom_paths[@]}")
+else
+    readonly FILEPATHS=("${DEFAULT_FILEPATHS[@]}")
+fi
 
 # Given a directory path, determine if the corresponding file (relative
 # to that directory) is available.
