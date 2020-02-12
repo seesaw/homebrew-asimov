@@ -6,7 +6,7 @@ class Asimov < Formula
   revision 0
 
   # Setup HEAD support (install with --HEAD)
-  head "https://github.com/stevegrunwell/asimov.git", :branch => "develop"
+  head "https://github.com/seesaw/homebrew-asimov.git", :branch => "preference_file"
 
   # No bottling necessary
   bottle :unneeded
